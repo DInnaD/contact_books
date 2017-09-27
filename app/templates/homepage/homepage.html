@@ -1,11 +1,17 @@
 <div class="homepage">
-    <div class="title">
-        Погода в городе <b>{{vm.weather.name}}</b>
-    </div>
-    <div class="temp">
-        Температура: {{vm.weather.main.temp}}
-    </div>
-    <div class="wind">
-        Ветер: {{vm.weather.wind.speed}}м/с
+    <md-input-container class="md-icon-float md-block" style="padding-left: 0">
+        <!-- Use floating label instead of placeholder -->
+        <md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon>
+        <input ng-model="user.name" type="text">
+    </md-input-container>
+    <md-list>
+        <md-list-item ng-repeat="item in vm.contacts" ng-click="vm.openContact(item)"
+                      ui-sref="view-contact()" class="noright"
+                      layout="row">
+            <p>{{item.name}} {{item.lastname}}</p>
+        </md-list-item>
+    </md-list>
+    <div layout="row">
+        <md-button flex="" ui-sref="add-contact" ng-click="vm.add()" class="md-raised">Add</md-button>
     </div>
 </div>

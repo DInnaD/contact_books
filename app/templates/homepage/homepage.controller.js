@@ -5,11 +5,25 @@
         .controller('HomepageController', HomepageController);
 
 
-    HomepageController.$inject = ['data'];
+    HomepageController.$inject = ['data', 'contact'];
 
-    function HomepageController(data) {
+    function HomepageController(data, contact) {
         let vm = this;
+        vm.contacts = data;
+        vm.openContact = openContact;
+        vm.add = add;
 
-        vm.weather = data;
+        /**
+         *
+         * @param item
+         */
+        function openContact(item) {
+            contact.setContact(item);
+            console.log(item);
+        }
+
+        function add() {
+            contact.editable = false;
+        }
     }
 })();

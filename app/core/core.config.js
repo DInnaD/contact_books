@@ -23,24 +23,34 @@
                 controller: 'HomepageController',
                 controllerAs: 'vm',
                 resolve: {
-                    data: function (weather) {
-                        return weather.get({
-                                q: 'Poltava,UA',
-                                appid: '264a4855a3aeeb5196ff38e3d006cbe9',
-                                mode: 'json',
-                                units: 'metric'
-                            })
-                            .then(function (res) {
-                                return res;
-                            })
+                    data: function (contact) {
+                        return contact.getContacts();
                     }
                 }
             })
-            .state('login', {
-                url: '/login',
-                templateUrl: 'templates/login/login.html',
-                controller: 'LoginController',
+            .state('add-contact', {
+                url: '/add-contact',
+                templateUrl: 'templates/contact/add.html',
+                controller: 'AddContactController',
                 controllerAs: 'vm',
+                resolve: {
+                    currentContact: function (contact) {
+                        if (contact.editable) {
+                            return contact.getContact();
+                        }
+                    }
+                }
+            })
+            .state('view-contact', {
+                url: '/view-contact/',
+                templateUrl: 'templates/contact/view.html',
+                controller: 'ViewContactController',
+                controllerAs: 'vm',
+                resolve: {
+                    currentContact: function (contact) {
+                        return contact.getContact();
+                    }
+                }
             })
 
 

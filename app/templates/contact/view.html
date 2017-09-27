@@ -1,0 +1,16 @@
+<md-card md-theme="'default'" md-theme-watch>
+    <md-card-title>
+        <md-card-title-text>
+            <span class="md-headline">{{vm.contact.name}} {{vm.contact.lastname}}</span>
+            <span class="md-subhead">{{vm.contact.email}}</span>
+            <span class="md-subhead">{{vm.contact.phone}}</span>
+        </md-card-title-text>
+        <md-card-title-media>
+            <div class="md-media-lg card-media"></div>
+        </md-card-title-media>
+    </md-card-title>
+    <md-card-actions layout="row" layout-align="end center">
+        <md-button ui-sref="add-contact" ng-click="vm.edit()">Edit</md-button>
+        <md-button ng-click="vm.deleteContact()">Delete</md-button>
+    </md-card-actions>
+</md-card>
